@@ -1,4 +1,4 @@
-const generateModel = require('./generate-model');
+const generateModel = require('./generate-models.js');
 
 module.exports = {
   Event: generateModel('events'),

@@ -4,7 +4,7 @@ CREATE DATABASE mycon_test_db;
 \c mycon_test_db;
 
 CREATE TABLE events (
-    event_id SERIAL PRIMARY KEY,
+    events_id SERIAL PRIMARY KEY,
     event_name VARCHAR (30) NOT NULL,
     event_img VARCHAR (500),
     event_start VARCHAR(40),
@@ -39,8 +39,8 @@ INSERT INTO stall (stall_name, stall_logo, stall_description, stall_email, stall
     VALUES ('Bouncy Castle', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUaoEaeDT-ex28doUezuC1JG31FDKWAC0dlhkdDZ6vCd6DzX9r',
     'A castle to bounce on', 'bouncycastle@castlebouncy.com', 'www.bouncycastle.com', '0780948392041');
 
-SELECT * FROM events;
-SELECT * FROM stall;
-SELECT * FROM event_stalls
+-- SELECT * FROM events;
+-- SELECT * FROM stall;
+-- SELECT * FROM event_stalls
 
 -- psql -f seed.test.sql > text.txt
