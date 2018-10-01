@@ -19,6 +19,16 @@ const generateModel = (table) => {
         table, body
       })
     },
+    addToLookUp: (params, body) => {
+      console.log(body, 'body')
+      console.log(params, 'params')
+      console.log(table, 'table')
+      const id = params.event_id;
+      console.log(id, 'event id')
+      return db.many('INSERT INTO $(table:name) ($(body:name), $(params:name)) VALUES ($(body:csv), $(id)) RETURNING*;', {
+        table, body, params, id
+      })
+    },
     updateValue: (params, body) => {
       const id = params;
       const table_id = `${table}_id`;

@@ -45,7 +45,7 @@ describe('/api', () => {
     });
     it('PATCH /event/:event_id', () => {
       const event = {
-         "events_img": "newimg_url_here"
+        "events_img": "newimg_url_here"
       }
       return request
         .patch('/api/event/1')
@@ -60,7 +60,7 @@ describe('/api', () => {
   });
 });
 
-describe.only('/api', () => {
+describe('/api', () => {
   describe('/stall', () => {
     it('GET /stalls', () => {
       return request
@@ -101,7 +101,7 @@ describe.only('/api', () => {
     });
     it('PATCH /stalls/:stall_id', () => {
       const stall = {
-         "stall_logo": "newimg_url_here"
+        "stall_logo": "newimg_url_here"
       }
       return request
         .patch('/api/stalls/1')
@@ -112,6 +112,25 @@ describe.only('/api', () => {
           expect(res.body.stall.stall_logo).to.equal('newimg_url_here');
           expect(res.body.stall).to.be.an('object');
         });
+    });
+  });
+
+  describe('/api', () => {
+    describe('/event/:event_id', () => {
+      it('POST /event', () => {
+        const eventStalls = {
+          "stall_id": "1"
+        }
+        return request
+          .post('/api/event/1')
+          .send(eventStalls)
+          .expect(200)
+          .then(res => {
+            expect(res.body).to.have.all.keys('eventStalls');
+            expect(res.body.stalls.length).to.equal(1);
+            expect(res.body.stalls[0]).to.be.an('object');
+          });
+      });
     });
   });
 });
