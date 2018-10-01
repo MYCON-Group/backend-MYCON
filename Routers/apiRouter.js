@@ -1,5 +1,5 @@
 const apiRouter = require('express').Router();
-const eventsRouter = require('./events');
+const eventsRouter = require('./eventsRouter');
 
 apiRouter.route('/')
 // .get((req, res, next) => {
