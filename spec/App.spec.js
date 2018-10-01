@@ -25,5 +25,23 @@ describe('/api', () => {
           expect(res.body.event).to.be.an('object');
         });
     });
+    it('POST /event', () => {
+      const event = {
+        "events_name:": "birthday",
+        "events_img": "img_url_here",
+        "events_start": "1st Jan 2019",
+        "events_end": "1st Feb 2019",
+        "events_description": "a birthday party",
+        "events_location": "party central"
+      }
+      return request
+        .post('/api/event')
+        .send(event)
+        .expect(201)
+        .then(res => {
+          expect(res.body).to.have.all.keys('event');
+          expect(res.body.event).to.be.an('object');
+        });
+      });
   });
 });

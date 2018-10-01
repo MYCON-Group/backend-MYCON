@@ -15,10 +15,11 @@ const generateModel = (table) => {
       });
     },
     add: (body) => {
-      return db.one('INSERT INTO $(table:name) ($(body:name)) VALUES ($(body:csv)) RETURNING*;', {
+      return db.one('INSERT INTO $(table:name) (events_name, events_img, events_start, events_end, events_description, events_location) VALUES ($(body:csv)) RETURNING*;', {
         table, body
       })
     },
+    /* ($(body:name)) -- for james to play with when he has time */
     selectByParameter: (params, ...cols) => {
       if (cols.length === 1) cols = cols[0];
       const [[table_id, id]] = Object.entries(params);

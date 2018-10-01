@@ -5,12 +5,12 @@ CREATE DATABASE mycon_test_db;
 
 CREATE TABLE events (
     events_id SERIAL PRIMARY KEY,
-    event_name VARCHAR (30) NOT NULL,
-    event_img VARCHAR (500),
-    event_start VARCHAR(40),
-    event_end VARCHAR(40),
-    event_description VARCHAR(500),
-    event_location VARCHAR(40)
+    events_name VARCHAR (30) NOT NULL,
+    events_img VARCHAR (500),
+    events_start VARCHAR(40),
+    events_end VARCHAR(40),
+    events_description VARCHAR(500),
+    events_location VARCHAR(40)
 );
 
 CREATE TABLE stall (
@@ -25,13 +25,13 @@ CREATE TABLE stall (
 
 CREATE TABLE event_stalls (
     event_stalls_id SERIAL PRIMARY KEY,
-    event_id INT NOT NULL,
+    events_id INT NOT NULL,
     stall_id INT NOT NULL, 
-    FOREIGN KEY (event_id) REFERENCES events(event_id),
+    FOREIGN KEY (events_id) REFERENCES events(events_id),
     FOREIGN KEY (stall_id) REFERENCES stall(stall_id)
 );
 
-INSERT INTO events (event_name, event_img, event_start, event_end, event_description, event_location)
+INSERT INTO events (events_name, events_img, events_start, events_end, events_description, events_location)
     VALUES ('Northcoders Party!', 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/The_Adicts_2011_SO36_03.jpg/220px-The_Adicts_2011_SO36_03.jpg',
         '23 november 2018', '24 november 2019', 'A party for Northcoders', 'The Printworks');
 
