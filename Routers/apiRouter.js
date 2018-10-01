@@ -1,5 +1,6 @@
 const apiRouter = require('express').Router();
 const eventsRouter = require('./eventsRouter');
+const stallsRouter = require('./stallsRouter');
 
 apiRouter.route('/')
 // .get((req, res, next) => {
@@ -8,6 +9,6 @@ apiRouter.route('/')
 // });
 
 apiRouter.use('/event', eventsRouter);
-
+apiRouter.use('/stalls', stallsRouter);
 
 module.exports = apiRouter;

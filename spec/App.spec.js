@@ -59,3 +59,59 @@ describe('/api', () => {
     });
   });
 });
+
+describe.only('/api', () => {
+  describe('/stall', () => {
+    it('GET /stalls', () => {
+      return request
+        .get('/api/stalls')
+        .expect(200)
+        .then(res => {
+          expect(res.body).to.have.all.keys('stalls');
+          expect(res.body.stalls.length).to.equal(1);
+          expect(res.body.stalls[0]).to.be.an('object');
+        });
+    });
+    it('GET /stalls/:stall_id', () => {
+      return request
+        .get('/api/stalls/1')
+        .expect(200)
+        .then(res => {
+          expect(res.body).to.have.all.keys('stall');
+          expect(res.body.stall).to.be.an('object');
+        });
+    });
+    it('POST /stalls', () => {
+      const event = {
+        "stall_name": "birthday stall",
+        "stall_logo": "img_url_here",
+        "stall_description": "a stall for birthdays",
+        "stall_email": "birthdaystall@birthday.com",
+        "stall_web_address": "www.birthdaystallforyou.com",
+        "stall_ctn": "0161100000"
+      }
+      return request
+        .post('/api/stalls')
+        .send(event)
+        .expect(201)
+        .then(res => {
+          expect(res.body).to.have.all.keys('stall');
+          expect(res.body.stall).to.be.an('object');
+        });
+    });
+    it('PATCH /stalls/:stall_id', () => {
+      const stall = {
+         "stall_logo": "newimg_url_here"
+      }
+      return request
+        .patch('/api/stalls/1')
+        .send(stall)
+        .expect(201)
+        .then(res => {
+          expect(res.body).to.have.all.keys('stall');
+          expect(res.body.stall.stall_logo).to.equal('newimg_url_here');
+          expect(res.body.stall).to.be.an('object');
+        });
+    });
+  });
+});
