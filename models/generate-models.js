@@ -36,8 +36,9 @@ const generateModel = (table) => {
         cols, table, join_table, join_1, join_2, table_id, id
       })
     },
-    updateValue: (params, key) => {
+    updateValue: (/*params, key*/) => {
       const [[table_id, id]] = Object.entries(params);
+      console.log('THIS FUNCTION DOES NOTHING');
       // return db.one('UPDATE $(table:name) SET $(key:name) = NOT $(key:name) WHERE $(table_id:name) = $(id) RETURNING *;', {
       //   table, key, table_id, id
       // })
