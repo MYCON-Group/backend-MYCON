@@ -20,11 +20,7 @@ const generateModel = (table) => {
       })
     },
     addToLookUp: (params, body) => {
-      console.log(body, 'body')
-      console.log(params, 'params')
-      console.log(table, 'table')
-      const id = params.event_id;
-      console.log(id, 'event id')
+      const id = params.events_id;
       return db.many('INSERT INTO $(table:name) ($(body:name), $(params:name)) VALUES ($(body:csv), $(id)) RETURNING*;', {
         table, body, params, id
       })
@@ -38,7 +34,7 @@ const generateModel = (table) => {
                       WHERE $(table_id:name) = $(id) RETURNING*;', {
           table, body, values, table_id, id
         })
-        .catch((err) => console.log(err, '<<'))
+        .catch((err) => console.log)
     }
 
     // selectByParameter: (params, ...cols) => {

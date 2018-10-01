@@ -118,17 +118,17 @@ describe('/api', () => {
   describe('/api', () => {
     describe('/event/:event_id', () => {
       it('POST /event', () => {
-        const eventStalls = {
+        const event_stalls = {
           "stall_id": "1"
         }
         return request
           .post('/api/event/1')
-          .send(eventStalls)
-          .expect(200)
+          .send(event_stalls)
+          .expect(201)
           .then(res => {
-            expect(res.body).to.have.all.keys('eventStalls');
-            expect(res.body.stalls.length).to.equal(1);
-            expect(res.body.stalls[0]).to.be.an('object');
+            expect(res.body).to.have.all.keys('event_stalls');
+            expect(res.body.event_stalls.length).to.equal(1);
+            expect(res.body.event_stalls[0]).to.be.an('object');
           });
       });
     });

@@ -11,7 +11,7 @@ const getEvents = (req, res, next) => {
 }
 
 const getEvent = (req, res, next) => {
-  Event.selectById(req.params.event_id, '*')
+  Event.selectById(req.params.events_id, '*')
     .then(event => {
       res.status(200).send({ event });
     })
@@ -31,7 +31,7 @@ const postEvent = (req, res, next) => {
 }
 
 const updateEvent = (req, res, next) => {
-  Event.updateValue(req.params.event_id, req.body)
+  Event.updateValue(req.params.events_id, req.body)
     .then(event => {
       res.status(201).send({ event })
     })

@@ -6,7 +6,7 @@ events.route('/')
   .get(getEvents)
   .post(postEvent);
 
-events.route('/:event_id')
+events.route('/:events_id')
   .get(getEvent)
   .post(addStallToEvent)
   .patch(updateEvent);
