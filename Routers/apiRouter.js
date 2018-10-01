@@ -1,5 +1,5 @@
 const apiRouter = require('express').Router();
-const usersRouter = require('./usersRouter');
+const eventsRouter = require('./events');
 
 apiRouter.route('/')
 // .get((req, res, next) => {
@@ -7,7 +7,7 @@ apiRouter.route('/')
 //   res.render('../view/pages/api.ejs');
 // });
 
-apiRouter.use('/users', usersRouter);
+apiRouter.use('/event', eventsRouter);
 
 
 module.exports = apiRouter;
