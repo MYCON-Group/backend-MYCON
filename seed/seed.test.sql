@@ -39,4 +39,8 @@ INSERT INTO stall (stall_name, stall_logo, stall_description, stall_email, stall
     VALUES ('Bouncy Castle', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUaoEaeDT-ex28doUezuC1JG31FDKWAC0dlhkdDZ6vCd6DzX9r',
     'A castle to bounce on', 'bouncycastle@castlebouncy.com', 'www.bouncycastle.com', '0780948392041');
 
-SHOW TABLE;
+SELECT * FROM events;
+SELECT * FROM stall;
+SELECT * FROM event_stalls
+
+-- psql -f seed.test.sql > text.txt
