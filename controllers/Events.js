@@ -31,7 +31,7 @@ const postEvent = (req, res, next) => {
 }
 
 const updateEvent = (req, res, next) => {
-  Event.updateValue(/*decide what to send*/)
+  Event.updateValue(req.params.event_id, req.body)
     .then(event => {
       res.status(201).send({ event })
     })
