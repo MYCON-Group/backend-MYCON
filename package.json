@@ -1,0 +1,22 @@
+{
+  "name": "backend-mycon",
+  "version": "1.0.0",
+  "description": "The backend for MYCON project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MYCON-Group/backend-MYCON.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MYCON-Group/backend-MYCON/issues"
+  },
+  "homepage": "https://github.com/MYCON-Group/backend-MYCON#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
