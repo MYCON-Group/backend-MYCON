@@ -25,6 +25,11 @@ CREATE TABLE stall (
 
 CREATE TABLE event_stalls (
     event_stalls_id SERIAL PRIMARY KEY,
+    stall_x INT NOT NULL,
+    stall_y INT NOT NULL,
+    stall_height INT NOT NULL,
+    stall_width INT NOT NULL,
+    stall_rotation INT NOT NULL,
     events_id INT NOT NULL,
     stall_id INT NOT NULL, 
     FOREIGN KEY (events_id) REFERENCES events(events_id),

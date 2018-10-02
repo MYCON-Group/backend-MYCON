@@ -119,7 +119,12 @@ describe('/api', () => {
     describe('/event/:event_id', () => {
       it('POST /event', () => {
         const event_stalls = {
-          "stall_id": "1"
+          "stall_id": "1",
+          "stall_x": 0,
+          "stall_y": 0,
+          "stall_height": 40,
+          "stall_width": 60,
+          "stall_rotation": 0
         }
         return request
           .post('/api/event/1')
