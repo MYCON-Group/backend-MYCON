@@ -126,7 +126,7 @@ describe('/api', () => {
         .expect(200)
         .then(res => {
           expect(res.body).to.have.all.keys('stalls');
-          expect(res.body.stalls.length).to.equal(1);
+          expect(res.body.stalls.length).to.equal(3);
           expect(res.body.stalls[0]).to.be.an('object');
         });
     });
@@ -196,19 +196,19 @@ describe('/api', () => {
   });
 });
 
-describe('/event/:events_id/thisEvent', () => {
-  it('get /event/:events_id/thisEvent', () => {
+describe('/event/:events_id/map', () => {
+  it('get /event/:events_id/map', () => {
     return request
-      .get('/api/events/1/thisEvent')
+      .get('/api/events/1/map')
       .expect(200)
       .then(res => {
         expect(res.body).to.have.all.keys('event_stalls')
         expect(res.body.event_stalls).to.be.an('object')
       })
   })
-  it('get /events/:events_id/thisEvent', () => {
+  it('get /events/:events_id/map', () => {
     return request
-      .get('/api/events/5/thisEvent')
+      .get('/api/events/5/map')
       .expect(400)
       .then(res => {
         expect(res.body.msg).to.equal('No data returned from the query.');

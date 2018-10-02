@@ -11,7 +11,7 @@ events.route('/:events_id')
   .post(addStallToEvent)
   .patch(updateEvent);
 
-events.route('/:events_id/thisEvent')
+events.route('/:events_id/map')
   .get(getEventStallInfo)
 
 module.exports = events;

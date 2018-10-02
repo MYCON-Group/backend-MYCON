@@ -28,11 +28,11 @@ CREATE TABLE stall
 CREATE TABLE event_stalls
 (
     event_stalls_id SERIAL PRIMARY KEY,
-    stall_x INT NOT NULL,
-    stall_y INT NOT NULL,
-    stall_height INT NOT NULL,
-    stall_width INT NOT NULL,
-    stall_rotation INT NOT NULL,
+    stall_x INT DEFAULT 0,
+    stall_y INT DEFAULT 0,
+    stall_height INT DEFAULT 25,
+    stall_width INT DEFAULT 25,
+    stall_rotation INT DEFAULT 0,
     events_id INT NOT NULL,
     stall_id INT NOT NULL,
     FOREIGN KEY (events_id) REFERENCES events(events_id),
@@ -49,7 +49,20 @@ INSERT INTO stall
     (stall_name, stall_logo, stall_description, stall_email, stall_web_address, stall_ctn)
 VALUES
     ('Bouncy Castle', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUaoEaeDT-ex28doUezuC1JG31FDKWAC0dlhkdDZ6vCd6DzX9r',
-        'A castle to bounce on', 'bouncycastle@castlebouncy.com', 'www.bouncycastle.com', '0780948392041');
+        'A castle to bounce on', 'bouncycastle@castlebouncy.com', 'www.bouncycastle.com', '0780948392041'),
+    ('facebook', 'https://en.facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png',
+        'social media', 'facebook@fb.com', 'www.facebook.com', '07364291237'),
+    ('google', 'https://pbs.twimg.com/profile_images/972154872261853184/RnOg6UyU_400x400.jpg',
+        'search engine', 'google@gmail.com', 'www.google.com', '07743647381');
+
+
+INSERT INTO event_stalls
+    (events_id, stall_id)
+VALUES
+    (1, 1),
+    (1, 2),
+    (1, 3);
+
 
 -- INSERT INTO event_stalls (stall_x, stall_y, stall_height, stall_width, stall_rotation, event_stalls_id, stall_id)
 -- VALUES
