@@ -119,8 +119,6 @@ describe('/api', () => {
     });
   });
 
-
-
   describe('/stall', () => {
     it('GET /stalls', () => {
       return request
@@ -198,3 +196,22 @@ describe('/api', () => {
   });
 });
 
+describe('/event/:events_id/thisEvent', () => {
+  it ('get /event/:events_id/thisEvent', () => {
+    return request
+    .get('/api/event/1/thisEvent')
+      .expect(200)
+      .then(res => {
+        expect(res.body).to.have.all.keys('event_stalls')
+        expect(res.body.event_stalls).to.be.an('object')
+      })
+    })
+    it ('get /event/:events_id/thisEvent', () => {
+      return request
+      .get('/api/event/5/thisEvent')
+        .expect(400)
+        .then(res => {
+          expect(res.body.msg).to.equal('No data returned from the query.');
+        })
+      })
+  })
