@@ -23,6 +23,8 @@ app.get('/*', (req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
+  if (err.code === '23503') res.status(400).send({ msg: 'No data returned from the query.', status: 400});
+  if (err.message === 'No data returned from the query.') res.status(400).send({ msg: 'No data returned from the query.', status: 400});
   if (err.status) res.status(err.status).send(err);
   else res.status(500).send({ msg: 'Internal server error', status: 500 });
 });

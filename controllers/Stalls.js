@@ -1,4 +1,5 @@
 const { Stall } = require('../models');
+const { isEmpty } = require('lodash');
 
 const getStalls = (req, res, next) => {
   Stall.selectAll('*')
@@ -33,7 +34,8 @@ const postStall = (req, res, next) => {
 const updateStallInfo = (req, res, next) => {
   Stall.updateValue(req.params.stall_id, req.body)
     .then(stall => {
-      res.status(201).send({ stall })
+      if (isEmpty(stall)) throw ({ status: 400, msg: 'No data returned from the query.' })
+      else res.status(201).send({ stall })
     })
     .catch(err => {
       next(err)

@@ -1,4 +1,5 @@
 const { Event } = require('../models');
+const { isEmpty } = require('lodash');
 
 const getEvents = (req, res, next) => {
   Event.selectAll('*')
@@ -33,7 +34,8 @@ const postEvent = (req, res, next) => {
 const updateEvent = (req, res, next) => {
   Event.updateValue(req.params.events_id, req.body)
     .then(event => {
-      res.status(201).send({ event })
+      if (isEmpty(event)) throw ({ status: 400, msg: 'No data returned from the query.' })
+      else res.status(201).send({ event })
     })
     .catch(err => {
       next(err)
