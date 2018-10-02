@@ -4,13 +4,13 @@ CREATE DATABASE mycon_db;
 \c mycon_db;
 
 CREATE TABLE events (
-    event_id SERIAL PRIMARY KEY,
-    event_name VARCHAR (30) NOT NULL,
-    event_img VARCHAR (500),
-    event_start VARCHAR(40),
-    event_end VARCHAR(40),
-    event_description VARCHAR(500),
-    event_location VARCHAR(40)
+    events_id SERIAL PRIMARY KEY,
+    events_name VARCHAR (30) NOT NULL,
+    events_img VARCHAR (500),
+    events_start VARCHAR(40),
+    events_end VARCHAR(40),
+    events_description VARCHAR(500),
+    events_location VARCHAR(40)
 );
 
 CREATE TABLE stall (
@@ -25,8 +25,13 @@ CREATE TABLE stall (
 
 CREATE TABLE event_stalls (
     event_stalls_id SERIAL PRIMARY KEY,
-    event_id INT NOT NULL,
+    stall_x INT NOT NULL,
+    stall_y INT NOT NULL,
+    stall_height INT NOT NULL,
+    stall_width INT NOT NULL,
+    stall_rotation INT NOT NULL,
+    events_id INT NOT NULL,
     stall_id INT NOT NULL, 
-    FOREIGN KEY (event_id) REFERENCES events(event_id),
+    FOREIGN KEY (events_id) REFERENCES events(events_id),
     FOREIGN KEY (stall_id) REFERENCES stall(stall_id)
 );

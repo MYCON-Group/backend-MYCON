@@ -11,4 +11,14 @@ const addStallToEvent = (req, res, next) => {
     })
 }
 
-module.exports = { addStallToEvent }
+const getEventStallInfo = (req, res, next) => {
+  EventStalls.selectById(req.params, '*')
+    .then(event_stalls => {
+      res.status(201).send({ event_stalls })
+    })
+    .catch(err => {
+      next(err);
+    })
+}
+
+module.exports = { addStallToEvent, getEventStallInfo }
