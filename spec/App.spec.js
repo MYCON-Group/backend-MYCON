@@ -5,10 +5,10 @@ const app = require('../app');
 const request = require('supertest')(app);
 
 describe('/api', () => {
-  describe('/event', () => {
-    it('GET /event', () => {
+  describe('/events', () => {
+    it('GET /events', () => {
       return request
-        .get('/api/event')
+        .get('/api/events')
         .expect(200)
         .then(res => {
           expect(res.body).to.have.all.keys('events');
@@ -16,7 +16,7 @@ describe('/api', () => {
           expect(res.body.events[0]).to.be.an('object');
         });
     });
-    it('POST /event', () => {
+    it('POST /events', () => {
       const event = {
         "events_name": "birthday",
         "events_img": "img_url_here",
@@ -26,7 +26,7 @@ describe('/api', () => {
         "events_location": "party central"
       }
       return request
-        .post('/api/event')
+        .post('/api/events')
         .send(event)
         .expect(201)
         .then(res => {
@@ -35,68 +35,68 @@ describe('/api', () => {
         });
     });
   });
-    describe('/event/:event_id', () => {
-      it('POST /event/:event_id', () => {
-        const event_stalls = {
-          "stall_id": "1",
-          "stall_x": 0,
-          "stall_y": 0,
-          "stall_height": 40,
-          "stall_width": 60,
-          "stall_rotation": 0
-        }
-        return request
-          .post('/api/event/1')
-          .send(event_stalls)
-          .expect(201)
-          .then(res => {
-            expect(res.body).to.have.all.keys('event_stalls');
-            expect(res.body.event_stalls.length).to.equal(1);
-            expect(res.body.event_stalls[0]).to.be.an('object');
-          });
-      });
-    
-      it('POST /event/:event_id returns with error 400 when sent an invalid or expired id', () => {
-        const event_stalls = {
-          "stall_id": "1",
-          "stall_x": 0,
-          "stall_y": 0,
-          "stall_height": 40,
-          "stall_width": 60,
-          "stall_rotation": 0
-        }
-        return request
-          .post('/api/event/5')
-          .send(event_stalls)
-          .expect(400)
-          .then(res => {
-            expect(res.body.msg).to.equal('No data returned from the query.');
-          });
-      });
-    it('GET /event/:event_id', () => {
+  describe('/events/:event_id', () => {
+    it('POST /events/:event_id', () => {
+      const event_stalls = {
+        "stall_id": "1",
+        "stall_x": 0,
+        "stall_y": 0,
+        "stall_height": 40,
+        "stall_width": 60,
+        "stall_rotation": 0
+      }
       return request
-        .get('/api/event/1')
+        .post('/api/events/1')
+        .send(event_stalls)
+        .expect(201)
+        .then(res => {
+          expect(res.body).to.have.all.keys('event_stalls');
+          expect(res.body.event_stalls.length).to.equal(1);
+          expect(res.body.event_stalls[0]).to.be.an('object');
+        });
+    });
+
+    it('POST /events/:event_id returns with error 400 when sent an invalid or expired id', () => {
+      const event_stalls = {
+        "stall_id": "1",
+        "stall_x": 0,
+        "stall_y": 0,
+        "stall_height": 40,
+        "stall_width": 60,
+        "stall_rotation": 0
+      }
+      return request
+        .post('/api/events/5')
+        .send(event_stalls)
+        .expect(400)
+        .then(res => {
+          expect(res.body.msg).to.equal('No data returned from the query.');
+        });
+    });
+    it('GET /events/:event_id', () => {
+      return request
+        .get('/api/events/1')
         .expect(200)
         .then(res => {
           expect(res.body).to.have.all.keys('event');
           expect(res.body.event).to.be.an('object');
         });
     });
-    it('GET /event/:event_id', () => {
+    it('GET /events:event_id', () => {
       return request
-        .get('/api/event/5')
+        .get('/api/events/5')
         .expect(400)
         .then(res => {
           expect(res.body.msg).to.equal('No data returned from the query.');
         });
     });
 
-    it('PATCH /event/:event_id', () => {
+    it('PATCH /events/:event_id', () => {
       const event = {
         "events_img": "newimg_url_here"
       }
       return request
-        .patch('/api/event/1')
+        .patch('/api/events/1')
         .send(event)
         .expect(201)
         .then(res => {
@@ -105,12 +105,12 @@ describe('/api', () => {
           expect(res.body.event).to.be.an('object');
         });
     });
-    it('PATCH /event/:event_id', () => {
+    it('PATCH /events/:event_id', () => {
       const event = {
         "events_img": "newimg_url_here"
       }
       return request
-        .patch('/api/event/5')
+        .patch('/api/events/5')
         .send(event)
         .expect(400)
         .then(res => {
@@ -197,21 +197,21 @@ describe('/api', () => {
 });
 
 describe('/event/:events_id/thisEvent', () => {
-  it ('get /event/:events_id/thisEvent', () => {
+  it('get /event/:events_id/thisEvent', () => {
     return request
-    .get('/api/event/1/thisEvent')
+      .get('/api/events/1/thisEvent')
       .expect(200)
       .then(res => {
         expect(res.body).to.have.all.keys('event_stalls')
         expect(res.body.event_stalls).to.be.an('object')
       })
-    })
-    it ('get /event/:events_id/thisEvent', () => {
-      return request
-      .get('/api/event/5/thisEvent')
-        .expect(400)
-        .then(res => {
-          expect(res.body.msg).to.equal('No data returned from the query.');
-        })
+  })
+  it('get /events/:events_id/thisEvent', () => {
+    return request
+      .get('/api/events/5/thisEvent')
+      .expect(400)
+      .then(res => {
+        expect(res.body.msg).to.equal('No data returned from the query.');
       })
   })
+})

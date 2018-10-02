@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "npm run seed-test && mocha spec --exit",
-    "seed-test": "psql -f ./seed/seed.test.sql"
+    "seed-test": "psql -f ./seed/seed.test.sql",
+    "start": "node listen.js"
   },
   "repository": {
     "type": "git",

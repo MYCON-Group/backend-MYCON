@@ -8,7 +8,7 @@ apiRouter.route('/')
 //   res.render('../view/pages/api.ejs');
 // });
 
-apiRouter.use('/event', eventsRouter);
+apiRouter.use('/events', eventsRouter);
 apiRouter.use('/stalls', stallsRouter);
 
 module.exports = apiRouter;
