@@ -28,11 +28,10 @@ const generateModel = (table) => {
     updateValue: (params, body) => {
       const id = params;
       const table_id = `${table}_id`;
-      const values = Object.values(body).toString()
       return db.one('UPDATE $(table:name) \
-                       SET $(body:name) = $(values) \
+                       SET ($(body:name)) = ($(body:csv)) \
                       WHERE $(table_id:name) = $(id) RETURNING*;', {
-          table, body, values, table_id, id
+          table, body, table_id, id
         })
         .catch((err) => console.log)
     },
@@ -44,6 +43,19 @@ const generateModel = (table) => {
         cols, table, table_id, id
       })
     },
+    updateManyValues: (params, body) => {
+      const id = params;
+      const table_id = `event_stalls_id`;
+      return db.one('UPDATE $(table:name) \
+                       SET ($(body:name)) = ($(body:csv)) \
+                      WHERE $(table_id:name) = $(id) RETURNING*;', {
+          table, body, table_id, id
+        })
+        .catch((err) => console.log)
+    }
+
+
+
     // selectAndJoin: (params, join_table, join_table_id, ...cols) => {
     //   if (cols.length === 1) cols = cols[0];
     //   const join_1 = `${table}.${join_table_id}`;
