@@ -12,8 +12,12 @@ const addStallToEvent = (req, res, next) => {
 }
 
 const getEventStallInfo = (req, res, next) => {
-  EventStalls.selectById(req.params.events_id, '*')
-    .then(event_stalls => {
+  EventStalls.selectByParameter(req.params.events_id, '*')
+    .then(event_stalls_unformatted => {
+      const event_stalls = {};
+      event_stalls_unformatted.map(info => {
+        event_stalls[info.stall_id] = info
+      })
       res.status(200).send({ event_stalls })
     })
     .catch(err => {

@@ -35,17 +35,15 @@ const generateModel = (table) => {
           table, body, values, table_id, id
         })
         .catch((err) => console.log)
-    }
-
-    // selectByParameter: (params, ...cols) => {
-    //   if (cols.length === 1) cols = cols[0];
-    //   const [[table_id, id]] = Object.entries(params);
-    //   return db.many('SELECT $(cols:name) FROM $(table:name) WHERE $(table_id:name) = $(id);', {
-    //     cols, table, table_id, id
-    //   })
-    //     .catch(console.log);
-
-    // },
+    },
+    selectByParameter: (params, ...cols) => {
+      if (cols.length === 1) cols = cols[0];
+      const id = params;
+      const table_id = `events_id`;
+      return db.many('SELECT $(cols:name) FROM $(table:name) WHERE $(table_id:name) = $(id);', {
+        cols, table, table_id, id
+      })
+    },
     // selectAndJoin: (params, join_table, join_table_id, ...cols) => {
     //   if (cols.length === 1) cols = cols[0];
     //   const join_1 = `${table}.${join_table_id}`;

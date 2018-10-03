@@ -203,6 +203,7 @@ describe('/event/:events_id/map', () => {
       .expect(200)
       .then(res => {
         expect(res.body).to.have.all.keys('event_stalls')
+        expect(Object.keys(res.body.event_stalls).length).to.equal(3)
         expect(res.body.event_stalls).to.be.an('object')
       })
   })
