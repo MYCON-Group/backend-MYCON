@@ -12,7 +12,7 @@ const getUpdates = (req, res, next) => {
 }
 
 const getUpdate = (req, res, next) => {
-  Updates.selectById(req.params.events_id, '*')
+  Updates.selectByParameter(req.params.events_id, '*')
     .then(update => {
       res.status(200).send({ update });
     })

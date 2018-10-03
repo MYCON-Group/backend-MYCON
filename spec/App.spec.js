@@ -296,7 +296,7 @@ describe('/api', () => {
         .expect(200)
         .then(res => {
           expect(res.body).to.have.all.keys('update');
-          expect(res.body.update).to.be.an('object');
+          expect(res.body.update.length).to.equal(2);
         });
     });
     it('GET /updates/:updates_id', () => {
