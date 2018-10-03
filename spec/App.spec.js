@@ -82,7 +82,7 @@ describe('/api', () => {
           expect(res.body.event).to.be.an('object');
         });
     });
-    it('GET /events:event_id', () => {
+    it('GET /events:event_id returns with error 400 when sent an invalid or expired id', () => {
       return request
         .get('/api/events/5')
         .expect(400)
@@ -106,7 +106,7 @@ describe('/api', () => {
           expect(res.body.event).to.be.an('object');
         });
     });
-    it('PATCH /events/:event_id', () => {
+    it('PATCH /events/:event_id returns with error 400 when sent an invalid or expired id', () => {
       const event = {
         "events_img": "newimg_url_here"
       }
@@ -166,7 +166,7 @@ describe('/api', () => {
           expect(res.body.stall).to.be.an('object');
         });
     });
-    it('PATCH /stalls/:stall_id', () => {
+    it('PATCH /stalls/:stall_id returns with error 400 when sent an invalid or expired id', () => {
       const stall = {
         "stall_logo": "newimg_url_here"
       }
@@ -187,7 +187,7 @@ describe('/api', () => {
           expect(res.body.stall).to.be.an('object');
         });
     });
-    it('GET /stalls/:stall_id', () => {
+    it('GET /stalls/:stall_id returns with error 400 when sent an invalid or expired id', () => {
       return request
         .get('/api/stalls/10')
         .expect(400)
@@ -209,7 +209,7 @@ describe('/event/:events_id/map', () => {
         expect(res.body.event_stalls).to.be.an('object')
       })
   })
-  it('get /events/:events_id/map', () => {
+  it('get /events/:events_id/map returns with error 400 when sent an invalid or expired id', () => {
     return request
       .get('/api/events/10/map')
       .expect(400)
@@ -299,7 +299,7 @@ describe('/api', () => {
           expect(res.body.update.length).to.equal(2);
         });
     });
-    it('GET /updates/:updates_id', () => {
+    it('GET /updates/:updates_id returns with error 400 when sent an invalid or expired id', () => {
       return request
         .get('/api/updates/5')
         .expect(400)
@@ -325,7 +325,7 @@ describe('/api', () => {
           expect(res.body.update).to.be.an('object');
         });
     });
-    it('PATCH /updates/:updates_id', () => {
+    it('PATCH /updates/:updates_id returns with error 400 when sent an invalid or expired id', () => {
       const update = {
         updates_body: 'This is new update',
         updates_time: 'Sometime later',
