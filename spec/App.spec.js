@@ -262,3 +262,83 @@ describe('/event/:events_id/map', () => {
   })
 })
 
+describe('/api', () => {
+  describe('/updates', () => {
+    it('GET /updates', () => {
+      return request
+        .get('/api/updates')
+        .expect(200)
+        .then(res => {
+          expect(res.body).to.have.all.keys('updates');
+          expect(res.body.updates.length).to.equal(1);
+          expect(res.body.updates[0]).to.be.an('object');
+        });
+    });
+    it('POST /updates', () => {
+      const update = {
+        updates_body: 'This is another update',
+        updates_time: 'Sometime',
+        stall_id: 1,
+        events_id: 1
+      }
+      return request
+        .post('/api/updates')
+        .send(update)
+        .expect(201)
+        .then(res => {
+          expect(res.body).to.have.all.keys('update');
+          expect(res.body.update).to.be.an('object');
+        });
+    });
+    it('GET /updates/:updates_id', () => {
+      return request
+        .get('/api/updates/1')
+        .expect(200)
+        .then(res => {
+          expect(res.body).to.have.all.keys('update');
+          expect(res.body.update).to.be.an('object');
+        });
+    });
+    it('GET /updates/:updates_id', () => {
+      return request
+        .get('/api/updates/5')
+        .expect(400)
+        .then(res => {
+          expect(res.body.msg).to.equal('No data returned from the query.');
+        });
+    });
+
+    it('PATCH /updates/:updates_id', () => {
+      const update = {
+        updates_body: 'This is new update',
+        updates_time: 'Sometime later',
+        stall_id: 1,
+        events_id: 1
+      }
+      return request
+        .patch('/api/updates/1')
+        .send(update)
+        .expect(201)
+        .then(res => {
+          expect(res.body).to.have.all.keys('update');
+          expect(res.body.update.updates_body).to.equal('This is new update');
+          expect(res.body.update).to.be.an('object');
+        });
+    });
+    it('PATCH /updates/:updates_id', () => {
+      const update = {
+        updates_body: 'This is new update',
+        updates_time: 'Sometime later',
+        stall_id: 1,
+        events_id: 1
+      }
+      return request
+        .patch('/api/updates/5')
+        .send(update)
+        .expect(400)
+        .then(res => {
+          expect(res.body.msg).to.equal('No data returned from the query.');
+        });
+    });
+  });
+});

@@ -41,6 +41,17 @@ CREATE TABLE event_stalls
     FOREIGN KEY (stall_id) REFERENCES stall(stall_id)
 );
 
+CREATE TABLE updates
+(
+    updates_id SERIAL PRIMARY KEY,
+    updates_body VARCHAR,
+    updates_time VARCHAR DEFAULT NULL,
+    stall_id INT NOT NULL,
+    events_id INT NOT NULL,
+    FOREIGN KEY (events_id) REFERENCES events(events_id),
+    FOREIGN KEY (stall_id) REFERENCES stall(stall_id)
+);
+
 INSERT INTO events
     (events_name, events_img, events_start, events_end, events_description, events_location, events_map_height, events_map_width)
 VALUES
@@ -73,6 +84,8 @@ VALUES
     (1, 4),
     (1, 5);
 
+INSERT INTO updates (updates_body, updates_time, stall_id, events_id)
+VALUES ('This is an update', 'A time', 1, 1)
 
 -- INSERT INTO event_stalls (stall_x, stall_y, stall_height, stall_width, stall_rotation, event_stalls_id, stall_id)
 -- VALUES

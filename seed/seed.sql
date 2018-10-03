@@ -37,3 +37,14 @@ CREATE TABLE event_stalls (
     FOREIGN KEY (events_id) REFERENCES events(events_id),
     FOREIGN KEY (stall_id) REFERENCES stall(stall_id)
 );
+
+CREATE TABLE updates
+(
+    updates_id SERIAL PRIMARY KEY,
+    updates_body VARCHAR,
+    updates_time VARCHAR DEFAULT NULL,
+    stall_id INT NOT NULL,
+    events_id INT NOT NULL,
+    FOREIGN KEY (events_id) REFERENCES events(events_id),
+    FOREIGN KEY (stall_id) REFERENCES stall(stall_id)
+);
