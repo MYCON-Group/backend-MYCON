@@ -93,7 +93,8 @@ describe('/api', () => {
 
     it('PATCH /events/:event_id', () => {
       const event = {
-        "events_img": "newimg_url_here"
+        "events_img": "newimg_url_here",
+        'events_name': 'newEventname'
       }
       return request
         .patch('/api/events/1')
@@ -152,7 +153,8 @@ describe('/api', () => {
   describe('/stalls/:stall_id', () => {
     it('PATCH /stalls/:stall_id', () => {
       const stall = {
-        "stall_logo": "newimg_url_here"
+        "stall_logo": "newimg_url_here",
+        'stall_name': 'newName'
       }
       return request
         .patch('/api/stalls/1')
@@ -203,6 +205,7 @@ describe('/event/:events_id/map', () => {
       .expect(200)
       .then(res => {
         expect(res.body).to.have.all.keys('event_stalls')
+        expect(Object.keys(res.body.event_stalls).length).to.equal(3)
         expect(res.body.event_stalls).to.be.an('object')
       })
   })
@@ -214,4 +217,48 @@ describe('/event/:events_id/map', () => {
         expect(res.body.msg).to.equal('No data returned from the query.');
       })
   })
+  it('patch /event/:events_id/map', () => {
+    const stall_stalls = {
+      1: {
+        "event_stalls_id": 2,
+        "stall_x": 0,
+        "stall_y": 0,
+        "stall_height": 100,
+        "stall_width": 25,
+        "stall_rotation": 0,
+        "events_id": 1,
+        "stall_id": 1
+      },
+      2: {
+        "event_stalls_id": 1,
+        "stall_x": 0,
+        "stall_y": 0,
+        "stall_height": 25,
+        "stall_width": 25,
+        "stall_rotation": 0,
+        "events_id": 1,
+        "stall_id": 2
+      },
+      3: {
+        "event_stalls_id": 3,
+        "stall_x": 0,
+        "stall_y": 0,
+        "stall_height": 25,
+        "stall_width": 25,
+        "stall_rotation": 0,
+        "events_id": 1,
+        "stall_id": 3
+      }
+    }
+    return request
+      .patch('/api/events/1/map')
+      .send(stall_stalls)
+      .expect(201)
+      .then(res => {
+        expect(res.body).to.have.all.keys('event_stalls')
+        expect(Object.keys(res.body.event_stalls).length).to.equal(3)
+        expect(res.body.event_stalls[0].stall_height).to.equal(100)
+      })
+  })
 })
+
