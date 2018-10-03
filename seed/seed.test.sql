@@ -11,7 +11,9 @@ CREATE TABLE events
     events_start VARCHAR(40),
     events_end VARCHAR(40),
     events_description VARCHAR(500),
-    events_location VARCHAR(40)
+    events_location VARCHAR(40),
+    events_map_height INT,
+    events_map_width INT
 );
 
 CREATE TABLE stall
@@ -40,12 +42,12 @@ CREATE TABLE event_stalls
 );
 
 INSERT INTO events
-    (events_name, events_img, events_start, events_end, events_description, events_location)
+    (events_name, events_img, events_start, events_end, events_description, events_location, events_map_height, events_map_width)
 VALUES
-    ('Northcoders Party!', 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/The_Adicts_2011_SO36_03.jpg/220px-The_Adicts_2011_SO36_03.jpg',
-        '23 november 2018', '24 november 2019', 'A party for Northcoders', 'The Printworks'),
-    ('Comicon', 'https://upload.wikimedia.org/wikipedia/en/thumb/9/97/San_Diego_Comic-Con_International_logo.svg/829px-San_Diego_Comic-Con_International_logo.svg.png',
-        '30 december 2018', '31 december 2018', 'gathering of nerd culture', 'Piccadilly trainstation');
+    ('Northcoders Party!', 'http://denverconvention.com/uploads/content/Exhibit_Map.jpg',
+        '23 november 2018', '24 november 2019', 'A party for Northcoders', 'The Printworks', 832,1085),
+    ('Comicon', 'https://static1.squarespace.com/static/57329088f8baf36eb1112c8d/t/595c2461ebbd1a1d0aa6fa6a/1499210854353/',
+        '30 december 2018', '31 december 2018', 'gathering of nerd culture', 'Piccadilly trainstation', 724, 1000);
 
 INSERT INTO stall
     (stall_name, stall_logo, stall_description, stall_email, stall_web_address, stall_ctn)

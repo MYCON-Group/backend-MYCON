@@ -10,7 +10,9 @@ CREATE TABLE events (
     events_start VARCHAR(40),
     events_end VARCHAR(40),
     events_description VARCHAR(500),
-    events_location VARCHAR(40)
+    events_location VARCHAR(40),
+    events_map_height INT,
+    events_map_width INT
 );
 
 CREATE TABLE stall (
