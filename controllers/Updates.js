@@ -21,6 +21,17 @@ const getUpdate = (req, res, next) => {
     })
 }
 
+const getUpdateForStall = (req, res, next) => {
+  Updates.selectByDoubleParam(req.params.events_id, req.params.stall_id, '*')
+    .then(updates => {
+      if (isEmpty(updates)) throw ({ status: 400, msg: 'No data returned from the query.' })
+      else res.status(200).send({ updates })
+    })
+    .catch(err => {
+      next(err)
+    })
+}
+
 const postUpdate = (req, res, next) => {
   Updates.add(req.body)
     .then(update => {
@@ -42,4 +53,4 @@ const updateUpdate = (req, res, next) => {
     })
 }
 
-module.exports = { getUpdates, postUpdate, getUpdate, updateUpdate };
+module.exports = { getUpdates, postUpdate, getUpdate, updateUpdate, getUpdateForStall };

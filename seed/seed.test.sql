@@ -44,7 +44,7 @@ CREATE TABLE event_stalls
 CREATE TABLE updates
 (
     updates_id SERIAL PRIMARY KEY,
-    updates_body VARCHAR,
+    updates_body VARCHAR NOT NULL,
     updates_time VARCHAR DEFAULT NULL,
     stall_id INT NOT NULL,
     events_id INT NOT NULL,

@@ -340,5 +340,29 @@ describe('/api', () => {
           expect(res.body.msg).to.equal('No data returned from the query.');
         });
     });
+    it('GET /updates/:event_id/:stall_id', () => {
+      return request
+        .get('/api/updates/1/1')
+        .expect(200)
+        .then(res => {
+          expect(res.body).to.have.all.keys('updates');
+          expect(res.body.updates.length).to.equal(2);
+          expect(res.body.updates[0]).to.have.all.keys(
+            'updates_id',
+            'updates_body',
+            'updates_time',
+            'stall_id',
+            'events_id')
+          expect(res.body.updates[0].updates_body).to.equal('This is another update')
+        });
+    });
+    it('GET /updates/:event_id/:stall_id returns with error 400 when sent an invalid or expired id', () => {
+      return request
+        .get('/api/updates/1/10')
+        .expect(400)
+        .then(res => {
+          expect(res.body.msg).to.equal('No data returned from the query.');
+        });
+    });
   });
 });
