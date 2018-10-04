@@ -28,24 +28,44 @@ const generateModel = (table) => {
     updateValue: (params, body) => {
       const id = params;
       const table_id = `${table}_id`;
-      const values = Object.values(body).toString()
       return db.one('UPDATE $(table:name) \
-                       SET $(body:name) = $(values) \
+                       SET ($(body:name)) = ($(body:csv)) \
                       WHERE $(table_id:name) = $(id) RETURNING*;', {
-          table, body, values, table_id, id
+          table, body, table_id, id
+        })
+        .catch((err) => console.log)
+    },
+    selectByParameter: (params, ...cols) => {
+      if (cols.length === 1) cols = cols[0];
+      const id = params;
+      const table_id = `events_id`;
+      return db.many('SELECT $(cols:name) FROM $(table:name) WHERE $(table_id:name) = $(id);', {
+        cols, table, table_id, id
+      })
+    },
+    selectByDoubleParam: (param1, param2, ...cols) => {
+      if (cols.length === 1) cols = cols[0];
+      const id1 = param1;
+      const id2 = param2;
+      const table_id1 = `events_id`;
+      const table_id2 = `stall_id`;
+      return db.many('SELECT $(cols:name) FROM $(table:name) WHERE $(table_id1:name) = $(id1) AND $(table_id2:name) = $(id2);', {
+        cols, table, table_id1, id1, table_id2, id2
+      })
+    },
+    updateManyValues: (params, body) => {
+      const id = params;
+      const table_id = `event_stalls_id`;
+      return db.one('UPDATE $(table:name) \
+                       SET ($(body:name)) = ($(body:csv)) \
+                      WHERE $(table_id:name) = $(id) RETURNING*;', {
+          table, body, table_id, id
         })
         .catch((err) => console.log)
     }
 
-    // selectByParameter: (params, ...cols) => {
-    //   if (cols.length === 1) cols = cols[0];
-    //   const [[table_id, id]] = Object.entries(params);
-    //   return db.many('SELECT $(cols:name) FROM $(table:name) WHERE $(table_id:name) = $(id);', {
-    //     cols, table, table_id, id
-    //   })
-    //     .catch(console.log);
 
-    // },
+
     // selectAndJoin: (params, join_table, join_table_id, ...cols) => {
     //   if (cols.length === 1) cols = cols[0];
     //   const join_1 = `${table}.${join_table_id}`;

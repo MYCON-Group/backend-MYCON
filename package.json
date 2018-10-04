@@ -6,7 +6,8 @@
   "scripts": {
     "test": "npm run seed-test && mocha spec --exit",
     "seed-test": "psql -f ./seed/seed.test.sql",
-    "start": "node listen.js"
+    "start": "node listen.js",
+    "dev": "nodemon listen.js"
   },
   "repository": {
     "type": "git",
@@ -20,9 +21,12 @@
   "homepage": "https://github.com/MYCON-Group/backend-MYCON#readme",
   "dependencies": {
     "chai": "^4.2.0",
+    "cors": "^2.8.4",
     "db": "^1.0.7",
     "express": "^4.16.3",
     "lodash": "^4.17.11",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.4",
     "pg-promise": "^8.4.6",
     "pgpromise": "^0.1.1",
     "supertest": "^3.3.0"

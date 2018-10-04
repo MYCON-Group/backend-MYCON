@@ -10,7 +10,9 @@ CREATE TABLE events (
     events_start VARCHAR(40),
     events_end VARCHAR(40),
     events_description VARCHAR(500),
-    events_location VARCHAR(40)
+    events_location VARCHAR(40),
+    events_map_height INT,
+    events_map_width INT
 );
 
 CREATE TABLE stall (
@@ -32,6 +34,17 @@ CREATE TABLE event_stalls (
     stall_rotation INT NOT NULL,
     events_id INT NOT NULL,
     stall_id INT NOT NULL, 
+    FOREIGN KEY (events_id) REFERENCES events(events_id),
+    FOREIGN KEY (stall_id) REFERENCES stall(stall_id)
+);
+
+CREATE TABLE updates
+(
+    updates_id SERIAL PRIMARY KEY,
+    updates_body VARCHAR,
+    updates_time VARCHAR DEFAULT NULL,
+    stall_id INT NOT NULL,
+    events_id INT NOT NULL,
     FOREIGN KEY (events_id) REFERENCES events(events_id),
     FOREIGN KEY (stall_id) REFERENCES stall(stall_id)
 );

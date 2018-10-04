@@ -12,8 +12,12 @@ const addStallToEvent = (req, res, next) => {
 }
 
 const getEventStallInfo = (req, res, next) => {
-  EventStalls.selectById(req.params.events_id, '*')
-    .then(event_stalls => {
+  EventStalls.selectByParameter(req.params.events_id, '*')
+    .then(event_stalls_unformatted => {
+      const event_stalls = {};
+      event_stalls_unformatted.map(info => {
+        event_stalls[info.stall_id] = info
+      })
       res.status(200).send({ event_stalls })
     })
     .catch(err => {
@@ -21,4 +25,20 @@ const getEventStallInfo = (req, res, next) => {
     })
 }
 
-module.exports = { addStallToEvent, getEventStallInfo }
+const addEventStallInfo = (req, res, next) => {
+  const infoToUpdate = Object.values(req.body)
+  Promise.all(
+    infoToUpdate.map(updateStall => {
+      return EventStalls.updateManyValues(updateStall.event_stalls_id, updateStall)
+    })
+  )
+    .then(event_stalls => {
+      res.status(201).send({ event_stalls })
+    })
+    .catch(err => {
+      next(err);
+    })
+
+}
+
+module.exports = { addStallToEvent, getEventStallInfo, addEventStallInfo }
