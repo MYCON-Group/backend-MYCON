@@ -56,7 +56,7 @@ INSERT INTO events
     (events_name, events_img, events_start, events_end, events_description, events_location, events_map_height, events_map_width)
 VALUES
     ('Northcoders Party!', 'http://denverconvention.com/uploads/content/Exhibit_Map.jpg',
-        '23 november 2018', '24 november 2019', 'A party for Northcoders', 'The Printworks', 832,1085),
+        '23 november 2018', '24 november 2019', 'A party for Northcoders', 'The Printworks', 832, 1085),
     ('Comicon', 'https://static1.squarespace.com/static/57329088f8baf36eb1112c8d/t/595c2461ebbd1a1d0aa6fa6a/1499210854353/',
         '30 december 2018', '31 december 2018', 'gathering of nerd culture', 'Piccadilly trainstation', 724, 1000);
 
@@ -79,13 +79,15 @@ INSERT INTO event_stalls
     (events_id, stall_id)
 VALUES
     (1, 1),
-    (1, 2),
+    (2, 2),
     (1, 3),
     (1, 4),
     (1, 5);
 
-INSERT INTO updates (updates_body, updates_time, stall_id, events_id)
-VALUES ('This is an update', 'A time', 1, 1)
+INSERT INTO updates
+    (updates_body, updates_time, stall_id, events_id)
+VALUES
+    ('This is an update', 'A time', 1, 1)
 
 -- INSERT INTO event_stalls (stall_x, stall_y, stall_height, stall_width, stall_rotation, event_stalls_id, stall_id)
 -- VALUES
