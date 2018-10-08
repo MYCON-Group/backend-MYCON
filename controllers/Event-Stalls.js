@@ -52,7 +52,6 @@ const getStallForEvent = (req, res, next) => {
           stall_name: stall.stall_name,
           stall_logo: stall.stall_logo
         }
-        console.log(stall_info)
         stalls[stall.stall_id] = stall_info
       })
       res.status(200).send({ stalls })

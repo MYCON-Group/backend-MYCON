@@ -68,7 +68,6 @@ const generateModel = (table) => {
       const join_1 = `${table}.${join_table_id}`;
       const join_2 = `${join_table}.${join_table_id}`;
       const [[table_id, id]] = Object.entries(params);
-      console.log(cols)
       return db.many('SELECT $(cols:name) FROM $(table:name) JOIN $(join_table:name) ON $(join_1:raw) = $(join_2:raw) WHERE $(table_id:name) = $(id);', {
         cols, table, join_table, join_1, join_2, table_id, id
       })
