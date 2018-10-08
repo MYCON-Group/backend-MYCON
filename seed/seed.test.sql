@@ -87,7 +87,7 @@ VALUES
 INSERT INTO updates
     (updates_body, updates_time, stall_id, events_id)
 VALUES
-    ('This is an update', 'A time', 1, 1)
+    ('This is an update', 'A time', 1, 1);
 
 -- INSERT INTO event_stalls (stall_x, stall_y, stall_height, stall_width, stall_rotation, event_stalls_id, stall_id)
 -- VALUES
