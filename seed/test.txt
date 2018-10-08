@@ -1,0 +1,24 @@
+DROP DATABASE
+CREATE DATABASE
+You are now connected to database "mycon_test_db" as user "williamensoll".
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+ event_id |     event_name     |                                                        event_img                                                        |   event_start    |    event_end     |    event_description    | event_location 
+----------+--------------------+-------------------------------------------------------------------------------------------------------------------------+------------------+------------------+-------------------------+----------------
+        1 | Northcoders Party! | https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/The_Adicts_2011_SO36_03.jpg/220px-The_Adicts_2011_SO36_03.jpg | 23 november 2018 | 24 november 2019 | A party for Northcoders | The Printworks
+        2 | Northcoders Party! | https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/The_Adicts_2011_SO36_03.jpg/220px-The_Adicts_2011_SO36_03.jpg | 23 november 2018 | 24 november 2019 | A party for Northcoders | The Printworks
+(2 rows)
+
+ stall_id |  stall_name   |                                                stall_logo                                                |   stall_description   |          stall_email          |  stall_web_address   |   stall_ctn   
+----------+---------------+----------------------------------------------------------------------------------------------------------+-----------------------+-------------------------------+----------------------+---------------
+        1 | Bouncy Castle | https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUaoEaeDT-ex28doUezuC1JG31FDKWAC0dlhkdDZ6vCd6DzX9r | A castle to bounce on | bouncycastle@castlebouncy.com | www.bouncycastle.com | 0780948392041
+(1 row)
+
+ event_stalls_id | event_id | stall_id 
+-----------------+----------+----------
+(0 rows)
+
