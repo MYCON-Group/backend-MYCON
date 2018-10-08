@@ -6,8 +6,8 @@
   "scripts": {
     "test": "npm run seed-test && mocha spec --exit",
     "seed-test": "psql -f ./seed/seed.test.sql",
-    "start": "node listen.js",
-    "dev": "nodemon listen.js"
+    "start": "npm install && node server.js",
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
     "nodemon": "^1.18.4",
     "pg-promise": "^8.4.6",
     "pgpromise": "^0.1.1",
+    "socket.io": "^2.1.1",
     "supertest": "^3.3.0"
   }
 }
