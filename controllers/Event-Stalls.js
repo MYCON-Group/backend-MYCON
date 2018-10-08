@@ -46,13 +46,7 @@ const getStallForEvent = (req, res, next) => {
     .then(stalls_unformatted => {
       const stalls = {};
       stalls_unformatted.map(stall => {
-        stall_info = {
-          events_id: stall.events_id,
-          stall_id: stall.stall_id,
-          stall_name: stall.stall_name,
-          stall_logo: stall.stall_logo
-        }
-        stalls[stall.stall_id] = stall_info
+        stalls[stall.stall_id] = stall
       })
       res.status(200).send({ stalls })
     })

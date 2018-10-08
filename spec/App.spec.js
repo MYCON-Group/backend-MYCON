@@ -126,7 +126,6 @@ describe('/api', () => {
           expect(res.body).to.have.all.keys('stalls');
           expect(Object.keys(res.body.stalls).length).to.equal(4);
           expect(res.body.stalls[1]).to.be.an('object');
-          expect(res.body.stalls[1]).to.have.all.keys('events_id', 'stall_id', 'stall_logo', 'stall_name');
         });
     });
   });
