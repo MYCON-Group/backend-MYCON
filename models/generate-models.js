@@ -62,19 +62,17 @@ const generateModel = (table) => {
           table, body, table_id, id
         })
         .catch((err) => console.log)
-    }
-
-
-
-    // selectAndJoin: (params, join_table, join_table_id, ...cols) => {
-    //   if (cols.length === 1) cols = cols[0];
-    //   const join_1 = `${table}.${join_table_id}`;
-    //   const join_2 = `${join_table}.${join_table_id}`;
-    //   const [[table_id, id]] = Object.entries(params);
-    //   return db.many('SELECT $(cols:name) FROM $(table:name) JOIN $(join_table:name) ON $(join_1:raw) = $(join_2:raw) WHERE $(table_id:name) = $(id);', {
-    //     cols, table, join_table, join_1, join_2, table_id, id
-    //   })
-    // },
+    },
+    selectAndJoin: (params, join_table, join_table_id, ...cols) => {
+      if (cols.length === 1) cols = cols[0];
+      const join_1 = `${table}.${join_table_id}`;
+      const join_2 = `${join_table}.${join_table_id}`;
+      const [[table_id, id]] = Object.entries(params);
+      console.log(cols)
+      return db.many('SELECT $(cols:name) FROM $(table:name) JOIN $(join_table:name) ON $(join_1:raw) = $(join_2:raw) WHERE $(table_id:name) = $(id);', {
+        cols, table, join_table, join_1, join_2, table_id, id
+      })
+    },
   }
 }
 

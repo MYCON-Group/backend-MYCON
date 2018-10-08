@@ -41,4 +41,25 @@ const addEventStallInfo = (req, res, next) => {
 
 }
 
-module.exports = { addStallToEvent, getEventStallInfo, addEventStallInfo }
+const getStallForEvent = (req, res, next) => {
+  EventStalls.selectAndJoin(req.params, 'stall', 'stall_id', '*')
+    .then(stalls_unformatted => {
+      const stalls = {};
+      stalls_unformatted.map(stall => {
+        stall_info = {
+          events_id: stall.events_id,
+          stall_id: stall.stall_id,
+          stall_name: stall.stall_name,
+          stall_logo: stall.stall_logo
+        }
+        console.log(stall_info)
+        stalls[stall.stall_id] = stall_info
+      })
+      res.status(200).send({ stalls })
+    })
+    .catch(err => {
+      next(err);
+    })
+}
+
+module.exports = { addStallToEvent, getEventStallInfo, addEventStallInfo, getStallForEvent }

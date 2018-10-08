@@ -118,6 +118,17 @@ describe('/api', () => {
           expect(res.body.msg).to.equal('No data returned from the query.');
         });
     });
+    it('GET /events/:event_id/stalls - get all stalls for an event', () => {
+      return request
+        .get('/api/events/1/stalls')
+        .expect(200)
+        .then(res => {
+          expect(res.body).to.have.all.keys('stalls');
+          expect(Object.keys(res.body.stalls).length).to.equal(4);
+          expect(res.body.stalls[1]).to.be.an('object');
+          expect(res.body.stalls[1]).to.have.all.keys('events_id', 'stall_id', 'stall_logo', 'stall_name');
+        });
+    });
   });
 
   describe('/stall', () => {
@@ -205,7 +216,7 @@ describe('/event/:events_id/map', () => {
       .expect(200)
       .then(res => {
         expect(res.body).to.have.all.keys('event_stalls')
-        expect(Object.keys(res.body.event_stalls).length).to.equal(5)
+        expect(Object.keys(res.body.event_stalls).length).to.equal(4)
         expect(res.body.event_stalls).to.be.an('object')
       })
   })
@@ -290,7 +301,7 @@ describe('/api', () => {
           expect(res.body.update).to.be.an('object');
         });
     });
-    it('GET /updates/:updates_id', () => {
+    it('GET /updates/:events_id', () => {
       return request
         .get('/api/updates/1')
         .expect(200)
@@ -299,7 +310,7 @@ describe('/api', () => {
           expect(res.body.update.length).to.equal(2);
         });
     });
-    it('GET /updates/:updates_id returns with error 400 when sent an invalid or expired id', () => {
+    it('GET /updates/:events_id returns with error 400 when sent an invalid or expired id', () => {
       return request
         .get('/api/updates/5')
         .expect(400)
