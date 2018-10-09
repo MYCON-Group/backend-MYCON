@@ -164,7 +164,11 @@ describe('/api', () => {
     it('PATCH /stalls/:stall_id', () => {
       const stall = {
         "stall_logo": "newimg_url_here",
-        'stall_name': 'newName'
+        'stall_name': 'newName',
+        "stall_description": "new description",
+        "stall_email": "northcoders@gmail.com",
+        "stall_ctn": "07749324637&",
+        "stall_web_address": "www.northcoders.com"
       }
       return request
         .patch('/api/stalls/1')
@@ -178,7 +182,12 @@ describe('/api', () => {
     });
     it('PATCH /stalls/:stall_id returns with error 400 when sent an invalid or expired id', () => {
       const stall = {
-        "stall_logo": "newimg_url_here"
+        "stall_logo": "newimg_url_here",
+        'stall_name': 'newName',
+        "stall_description": "new description",
+        "stall_email": "northcoders@gmail.com",
+        "stall_ctn": "07749324637&",
+        "stall_web_address": "www.northcoders.com"
       }
       return request
         .patch('/api/stalls/10')
