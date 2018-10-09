@@ -205,6 +205,23 @@ describe('/api', () => {
           expect(res.body.msg).to.equal('No data returned from the query.');
         });
     });
+    it('GET /stalls/:stall_name/login', () => {
+      return request
+        .get('/api/stalls/northcoders/login')
+        .expect(200)
+        .then(res => {
+          expect(res.body).to.have.all.keys('stall');
+          expect(res.body.stall).to.be.an('object');
+        });
+    });
+    it('GET /stalls/:stall_name/login returns with error 400 when sent an invalid or expired id', () => {
+      return request
+        .get('/api/stalls/betty/login')
+        .expect(400)
+        .then(res => {
+          expect(res.body.msg).to.equal('No data returned from the query.');
+        });
+    });
   });
 });
 

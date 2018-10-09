@@ -21,6 +21,17 @@ const getStall = (req, res, next) => {
     })
 }
 
+const getStallByName = (req, res, next) => {
+  Stall.selectByParameter(req.params, req.params.stall_name, '*')
+    .then(stall => {
+      stall = stall[0]
+      res.status(200).send({ stall })
+    })
+    .catch(err => {
+      next(err)
+    })
+}
+
 const postStall = (req, res, next) => {
   Stall.add(req.body)
     .then(stall => {
@@ -42,4 +53,4 @@ const updateStallInfo = (req, res, next) => {
     })
 }
 
-module.exports = { getStalls, postStall, getStall, updateStallInfo };
+module.exports = { getStalls, postStall, getStall, updateStallInfo, getStallByName };

@@ -12,7 +12,7 @@ const addStallToEvent = (req, res, next) => {
 }
 
 const getEventStallInfo = (req, res, next) => {
-  EventStalls.selectByParameter(req.params.events_id, '*')
+  EventStalls.selectByParameter('events_id', req.params.events_id, '*')
     .then(event_stalls_unformatted => {
       const event_stalls = {};
       event_stalls_unformatted.map(info => {
