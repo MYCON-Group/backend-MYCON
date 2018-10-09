@@ -13,7 +13,9 @@ CREATE TABLE events
     events_description VARCHAR(500),
     events_location VARCHAR(40),
     events_map_height INT,
-    events_map_width INT
+    events_map_width INT,
+    events_height INT,
+    events_width INT
 );
 
 CREATE TABLE stall
@@ -53,12 +55,13 @@ CREATE TABLE updates
 );
 
 INSERT INTO events
-    (events_name, events_img, events_start, events_end, events_description, events_location, events_map_height, events_map_width)
+    (events_name, events_img, events_start, events_end, events_description, events_location, events_map_height, events_map_width,    events_height,
+    events_width)
 VALUES
     ('Northcoders Party!', 'http://denverconvention.com/uploads/content/Exhibit_Map.jpg',
-        '23 november 2018', '24 november 2019', 'A party for Northcoders', 'The Printworks', 832, 1085),
+        '23 november 2018', '24 november 2019', 'A party for Northcoders', 'The Printworks', 832, 1085, 80, 100),
     ('Comicon', 'https://static1.squarespace.com/static/57329088f8baf36eb1112c8d/t/595c2461ebbd1a1d0aa6fa6a/1499210854353/',
-        '30 december 2018', '31 december 2018', 'gathering of nerd culture', 'Piccadilly trainstation', 724, 1000);
+        '30 december 2018', '31 december 2018', 'gathering of nerd culture', 'Piccadilly trainstation', 724, 1000, 80, 100);
 
 INSERT INTO stall
     (stall_name, stall_logo, stall_description, stall_email, stall_web_address, stall_ctn)
