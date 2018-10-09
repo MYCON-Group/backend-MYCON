@@ -35,10 +35,9 @@ const generateModel = (table) => {
         })
         .catch((err) => console.log)
     },
-    selectByParameter: (params, ...cols) => {
+    selectByParameter: (table_id, params, ...cols) => {
       if (cols.length === 1) cols = cols[0];
       const id = params;
-      const table_id = `events_id`;
       return db.many('SELECT $(cols:name) FROM $(table:name) WHERE $(table_id:name) = $(id);', {
         cols, table, table_id, id
       })
