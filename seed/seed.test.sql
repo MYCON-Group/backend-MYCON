@@ -58,17 +58,10 @@ INSERT INTO events
     (events_name, events_img, events_start, events_end, events_description, events_location, events_map_height, events_map_width,    events_height,
     events_width)
 VALUES
-<<<<<<< HEAD
-    ('Northcoders Party!', 'https://i.postimg.cc/8CV0ySb0/Map1.png',
-        '23 november 2018', '24 november 2019', 'A party for Northcoders', 'The Printworks', 832, 1085),
-    ('Comicon', 'https://i.postimg.cc/WzTH7B0v/map2.png',
-        '30 december 2018', '31 december 2018', 'gathering of nerd culture', 'Piccadilly trainstation', 724, 1000);
-=======
     ('Northcoders Party!', 'http://denverconvention.com/uploads/content/Exhibit_Map.jpg',
         '23 november 2018', '24 november 2019', 'A party for Northcoders', 'The Printworks', 832, 1085, 80, 100),
     ('Comicon', 'https://static1.squarespace.com/static/57329088f8baf36eb1112c8d/t/595c2461ebbd1a1d0aa6fa6a/1499210854353/',
         '30 december 2018', '31 december 2018', 'gathering of nerd culture', 'Piccadilly trainstation', 724, 1000, 80, 100);
->>>>>>> 348b469c86e0bd866dbcfa530b1307e393aba97c
 
 INSERT INTO stall
     (stall_name, stall_logo, stall_description, stall_email, stall_web_address, stall_ctn)
@@ -97,14 +90,11 @@ VALUES
 INSERT INTO updates
     (updates_body, updates_time, stall_id, events_id)
 VALUES
-    ('This is an update', 'A time', 1, 1);
-
--- INSERT INTO event_stalls (stall_x, stall_y, stall_height, stall_width, stall_rotation, event_stalls_id, stall_id)
--- VALUES
-
-
--- SELECT * FROM events;
--- SELECT * FROM stall;
--- SELECT * FROM event_stalls
-
--- psql -f seed.test.sql > text.txt
+    ('We are selling donuts for the next half hour at 50% off!', 'A time', 1, 1);
+    ('We are running a demo of our latest product in 5 minuets', 'A time', 3, 1);
+    ('Come have a go on our waterslide!', 'A time', 3, 1);
+    ('We have found a wallet for a Mr Jones please come and collect.', 'A time', 3, 1);
+    ('Come guess the name of our fluffy unicorn and win a new laptop', 'A time', 4, 1);
+    ('Helicopter demonstration in 10 mins', 'A time', 4, 1);
+    ("Help! I'm stuck in this small box!", 'A time', 1, 1);
+    ('We are closing in 30 mins', 'A time', 5, 1);
