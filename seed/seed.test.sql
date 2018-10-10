@@ -87,15 +87,7 @@ VALUES
     ('rockstar games', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Rockstar_Games_Logo.svg/2000px-Rockstar_Games_Logo.svg.png',
         'we make games', 'rockstar@gmail.com', 'www.rockstar.com', '07778497381'),
     ('northcoders', 'https://cdn-images-1.medium.com/max/1200/1*LdnSztHVYhhd8K8EqlgCJQ.png',
-        'coding bootcamp', 'northcoders@gmail.com', 'www.northcoders.com', '07749324637'),
-    ('xbox', 'https:
-//banner2.kisspng.com/20180325/qkw/kisspng-fifa-16-xbox-360-logo-xbox-one-xbox-5ab750ab5d9f54.3373459515219631793835.jpg',
-        'we make games', 'xbox@gmail.com', 'www.xbox.com', '07782024637'),
-    ('ubisoft', 'http:
-//images.pushsquare.com/news/2018/04/ubisoft_dates_its_e3_2018_press_conference/attachment/0/900x.jpg', 'we make games', 'ubisoft@gmail.com', 'www.ubisoft.com', '07749324237'),
-    ('playstation', 'https:
-//upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Playstation_logo_colour.svg/2000px-Playstation_logo_colour.svg.png',
-        'part of sony we make games too', 'playstation@gmail.com', 'www.playstation.com', '07749473849');
+        'coding bootcamp', 'northcoders@gmail.com', 'www.northcoders.com', '07749324637');
 
 
 INSERT INTO event_stalls
@@ -105,10 +97,7 @@ VALUES
     (2, 2),
     (1, 3),
     (1, 4),
-    (1, 5),
-    (1, 6),
-    (1, 7),
-    (1, 8);
+    (1, 5);
 
 INSERT INTO updates
     (updates_body, updates_time, stall_id, events_id)
