@@ -55,20 +55,14 @@ CREATE TABLE updates
 );
 
 INSERT INTO events
-    (events_name, events_img, events_start, events_end, events_description, events_location, events_map_height, events_map_width,    events_height,
+    (events_name, events_img, events_start, events_end, events_description, events_location, events_map_height, events_map_width, events_height,
     events_width)
 VALUES
-<<<<<<< HEAD
     ('Northcoders Party!', 'https://i.postimg.cc/8CV0ySb0/Map1.png',
-        '23 november 2018', '24 november 2019', 'A party for Northcoders', 'The Printworks', 832, 1085),
+        '23 november 2018', '24 november 2019', 'A party for Northcoders', 'The Printworks', 800, 1043, 80, 100),
     ('Comicon', 'https://i.postimg.cc/WzTH7B0v/map2.png',
-        '30 december 2018', '31 december 2018', 'gathering of nerd culture', 'Piccadilly trainstation', 724, 1000);
-=======
-    ('Northcoders Party!', 'http://denverconvention.com/uploads/content/Exhibit_Map.jpg',
-        '23 november 2018', '24 november 2019', 'A party for Northcoders', 'The Printworks', 832, 1085, 80, 100),
-    ('Comicon', 'https://static1.squarespace.com/static/57329088f8baf36eb1112c8d/t/595c2461ebbd1a1d0aa6fa6a/1499210854353/',
         '30 december 2018', '31 december 2018', 'gathering of nerd culture', 'Piccadilly trainstation', 724, 1000, 80, 100);
->>>>>>> 348b469c86e0bd866dbcfa530b1307e393aba97c
+
 
 INSERT INTO stall
     (stall_name, stall_logo, stall_description, stall_email, stall_web_address, stall_ctn)
@@ -82,7 +76,16 @@ VALUES
     ('rockstar games', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Rockstar_Games_Logo.svg/2000px-Rockstar_Games_Logo.svg.png',
         'we make games', 'rockstar@gmail.com', 'www.rockstar.com', '07778497381'),
     ('northcoders', 'https://cdn-images-1.medium.com/max/1200/1*LdnSztHVYhhd8K8EqlgCJQ.png',
-        'coding bootcamp', 'northcoders@gmail.com', 'www.northcoders.com', '07749324637');
+        'coding bootcamp', 'northcoders@gmail.com', 'www.northcoders.com', '07749324637'),
+    ('xbox', 'https:
+//banner2.kisspng.com/20180325/qkw/kisspng-fifa-16-xbox-360-logo-xbox-one-xbox-5ab750ab5d9f54.3373459515219631793835.jpg',
+        'we make games', 'xbox@gmail.com', 'www.xbox.com', '07782024637'),
+    ('ubisoft', 'http:
+//images.pushsquare.com/news/2018/04/ubisoft_dates_its_e3_2018_press_conference/attachment/0/900x.jpg', 'we make games', 'ubisoft@gmail.com', 'www.ubisoft.com', '07749324237'),
+
+    ('playstation', 'https:
+//upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Playstation_logo_colour.svg/2000px-Playstation_logo_colour.svg.png',
+        'part of sony we make games too', 'playstation@gmail.com', 'www.playstation.com', '07749473849');
 
 
 INSERT INTO event_stalls
@@ -92,19 +95,13 @@ VALUES
     (2, 2),
     (1, 3),
     (1, 4),
-    (1, 5);
+    (1, 5),
+    (1, 6),
+    (1, 7),
+    (1, 8);
 
 INSERT INTO updates
     (updates_body, updates_time, stall_id, events_id)
 VALUES
     ('This is an update', 'A time', 1, 1);
 
--- INSERT INTO event_stalls (stall_x, stall_y, stall_height, stall_width, stall_rotation, event_stalls_id, stall_id)
--- VALUES
-
-
--- SELECT * FROM events;
--- SELECT * FROM stall;
--- SELECT * FROM event_stalls
-
--- psql -f seed.test.sql > text.txt
