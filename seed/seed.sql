@@ -113,11 +113,11 @@ VALUES
 INSERT INTO updates
     (updates_body, updates_time, stall_id, events_id)
 VALUES
-    ('We are selling donuts for the next half hour at 50% off!', 'A time', 1, 1);
-('We are running a demo of our latest product in 5 minuets', 'A time', 3, 1);
-('Come have a go on our waterslide!', 'A time', 3, 1);
-('We have found a wallet for a Mr Jones please come and collect.', 'A time', 3, 1);
-('Come guess the name of our fluffy unicorn and win a new laptop', 'A time', 4, 1);
-('Helicopter demonstration in 10 mins', 'A time', 4, 1);
-("Help! I'm stuck in this small box!", 'A time', 1, 1);
-('We are closing in 30 mins', 'A time', 5, 1);
+    ('We are selling donuts for the next half hour at 50% off!', 'A time', 1, 1),
+    ('We are running a demo of our latest product in 5 minuets', 'A time', 3, 1),
+    ('Come have a go on our waterslide!', 'A time', 3, 1),
+    ('We have found a wallet for a Mr Jones please come and collect.', 'A time', 3, 1),
+    ('Come guess the name of our fluffy unicorn and win a new laptop', 'A time', 4, 1),
+    ('Helicopter demonstration in 10 mins', 'A time', 4, 1),
+    ('Help! Im stuck in this small box!', 'A time', 1, 1),
+    ('We are closing in 30 mins', 'A time', 5, 1);

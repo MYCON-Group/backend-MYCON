@@ -12,9 +12,13 @@ const getUpdates = (req, res, next) => {
 }
 
 const getUpdate = (req, res, next) => {
-  Updates.selectByParameter('events_id', req.params.events_id, '*')
+  Updates.selectAndJoin(req.params, 'stall', 'stall_id', '*')
     .then(update => {
-      res.status(200).send({ update });
+      if (typeof update === 'object') {
+        res.status(200).send({ update });
+      } else {
+        throw ({ status: 400, msg: 'No data returned from the query.' })
+      }
     })
     .catch(err => {
       next(err);

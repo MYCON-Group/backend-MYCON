@@ -303,7 +303,7 @@ describe('/api', () => {
         .expect(200)
         .then(res => {
           expect(res.body).to.have.all.keys('updates');
-          expect(res.body.updates.length).to.equal(1);
+          expect(res.body.updates.length).to.equal(8);
           expect(res.body.updates[0]).to.be.an('object');
         });
     });
@@ -329,12 +329,13 @@ describe('/api', () => {
         .expect(200)
         .then(res => {
           expect(res.body).to.have.all.keys('update');
-          expect(res.body.update.length).to.equal(2);
+          expect(res.body.update[0]).to.have.all.keys('updates_id', 'updates_body', 'updates_time', 'events_id', 'stall_name', "stall_ctn", "stall_description", "stall_email", "stall_id", "stall_logo", "stall_web_address")
+          expect(res.body.update.length).to.equal(9);
         });
     });
     it('GET /updates/:events_id returns with error 400 when sent an invalid or expired id', () => {
       return request
-        .get('/api/updates/5')
+        .get('/api/updates/20')
         .expect(400)
         .then(res => {
           expect(res.body.msg).to.equal('No data returned from the query.');
@@ -366,7 +367,7 @@ describe('/api', () => {
         events_id: 1
       }
       return request
-        .patch('/api/updates/5')
+        .patch('/api/updates/10')
         .send(update)
         .expect(400)
         .then(res => {
@@ -379,14 +380,14 @@ describe('/api', () => {
         .expect(200)
         .then(res => {
           expect(res.body).to.have.all.keys('updates');
-          expect(res.body.updates.length).to.equal(2);
+          expect(res.body.updates.length).to.equal(3);
           expect(res.body.updates[0]).to.have.all.keys(
             'updates_id',
             'updates_body',
             'updates_time',
             'stall_id',
             'events_id')
-          expect(res.body.updates[0].updates_body).to.equal('This is another update')
+          expect(res.body.updates[0].updates_body).to.equal('Help! Im stuck in this small box!')
         });
     });
     it('GET /updates/:event_id/:stall_id returns with error 400 when sent an invalid or expired id', () => {
