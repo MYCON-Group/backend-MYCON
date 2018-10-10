@@ -70,6 +70,7 @@ const generateModel = (table) => {
       return db.many('SELECT $(cols:name) FROM $(table:name) JOIN $(join_table:name) ON $(join_1:raw) = $(join_2:raw) WHERE $(table_id:name) = $(id);', {
         cols, table, join_table, join_1, join_2, table_id, id
       })
+        .catch((err) => console.log)
     },
   }
 }
