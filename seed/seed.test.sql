@@ -87,7 +87,13 @@ VALUES
     ('rockstar games', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Rockstar_Games_Logo.svg/2000px-Rockstar_Games_Logo.svg.png',
         'we make games', 'rockstar@gmail.com', 'www.rockstar.com', '07778497381'),
     ('northcoders', 'https://cdn-images-1.medium.com/max/1200/1*LdnSztHVYhhd8K8EqlgCJQ.png',
-        'coding bootcamp', 'northcoders@gmail.com', 'www.northcoders.com', '07749324637');
+        'coding bootcamp', 'northcoders@gmail.com', 'www.northcoders.com', '07749324637'),
+    ('Coca Cola', 'https://www.cocacola.co.uk/content/dam/GO/CokeZone/Common/global/logo/logodesktop/coca-cola-logo-260x260.png',
+        'Coca Cola are here to refresh you', 'cocacola@gmail.com', 'https://www.coca-cola.co.uk/', '07774395983829'),
+    ('Vodafone', 'http://assets.vodafone.co.uk/cs/groups/configfiles/documents/document/vf-logo-large.png',
+    'Vodafone are here to sell you a phone or two', 'vodafone@gmail.com', 'www.vodafone.com', '079999999999'),
+    ('BAE Systems', 'https://130e178e8f8ba617604b-8aedd782b7d22cfe0d1146da69a52436.ssl.cf1.rackcdn.com/industry-news-bae-systems-launches-corporate-security-analysis-imageFile-8-a-7766.jpg',
+    'BAE Systems are here to talk about your aeronautical needs', 'BAESystems@gmail.com', 'https://www.baesystems.com/en/home', '077743859201');
 
 
 INSERT INTO event_stalls
@@ -102,11 +108,11 @@ VALUES
 INSERT INTO updates
     (updates_body, updates_time, stall_id, events_id)
 VALUES
-    ('We are selling donuts for the next half hour at 50% off!', 'A time', 1, 1),
-    ('We are running a demo of our latest product in 5 minuets', 'A time', 3, 1),
-    ('Come have a go on our waterslide!', 'A time', 3, 1),
-    ('We have found a wallet for a Mr Jones please come and collect.', 'A time', 3, 1),
-    ('Come guess the name of our fluffy unicorn and win a new laptop', 'A time', 4, 1),
-    ('Helicopter demonstration in 10 mins', 'A time', 4, 1),
-    ('Help! Im stuck in this small box!', 'A time', 1, 1),
-    ('We are closing in 30 mins', 'A time', 5, 1);
+    ('We are selling donuts for the next half hour at 50% off!', '1698784876406', 1, 1),
+    ('We are running a demo of our latest product in 5 minuets', '1698784873423', 3, 1),
+    ('Come have a go on our waterslide!', '1698784876324', 3, 1),
+    ('We have found a wallet for a Mr Jones please come and collect.', '1698784875458', 3, 1),
+    ('Come guess the name of our fluffy unicorn and win a new laptop', '1658784876406', 4, 1),
+    ('Helicopter demonstration in 10 mins', '1698784823232', 4, 1),
+    ('Help! Im stuck in this small box!', '1695684876406', 1, 1),
+    ('We are closing in 30 mins', '1698784876566', 5, 1);
